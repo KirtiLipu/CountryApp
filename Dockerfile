@@ -1,5 +1,6 @@
 FROM python:3.9
 WORKDIR /app
-COPY . /app
+COPY . .
 RUN pip install -r requirement.txt
-CMD [ "python", "app.py" ]
+EXPOSE 5000
+CMD [ "python", "./app/app.py" ]
