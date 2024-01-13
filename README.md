@@ -22,7 +22,28 @@ hitting an API
  Create a local k8s cluster on your workstation
  Deploy your service to the local k8s cluster
 
+If you're running on your local system, app is accessible through this API `http://localhost:5001`
+
+Before running this app through the container. Please use the below code to build your docker cotainer image
+
+`docker build -t country-lookup-service:latest .`
+
+If you want to use this image to deploy in your K8S cluster. Make sure the image should be pushed to any registry(local/dokcer hub registry)
+
+`docker pull registry:latest`
+
+`docker run -itd -p 6000:5000 --restart=always --name registry registry:latest`
+
+`docker tag country-lookup-service localhost:6000/country-lookup-service:latest`
+
+`docker push localhost:6000/country-lookup-service:latest`
+
+change the name of the container image in deployment manifest file accoring to the registry image name.
+
+I'm using
+
+`image: localhost:6000/country-lookup-service:latest`
 _________
-operating at an optimal level
+Operating at an optimal level
 
 TBD: Setup basic monitoring

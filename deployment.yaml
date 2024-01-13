@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: country-lookup-service
-        image: country-lookup-service
+        image: localhost:6000/country-lookup-service:latest
         resources:
           limits:
             memory: "128Mi"
